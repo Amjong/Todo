@@ -23,7 +23,7 @@ function TodoItem(props) {
       <span className='itemName'>{props.itemName}</span>
       <GoTrashcan
         onClick={() => {
-          props.removeItems();
+          props.removeItems(props.itemName);
         }}
       />
     </div>

@@ -25,10 +25,13 @@ export default function TodoItems() {
   //   useEffect(() => {
   //     console.log(items);
   //   }, [items]);
-  const removeItems = useCallback(() => {
-    // dispatch({ type: 'remove', removeItem });
+  const removeItems = useCallback((text) => {
+    setItems((prev) => ({
+      ...prev,
+      arr: prev.arr.filter((item) => item.name !== text),
+    }));
+    console.log('remove!');
   }, []);
-
   return (
     <div>
       {items.arr.map((item) => (
