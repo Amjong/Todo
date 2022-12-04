@@ -6,35 +6,16 @@ import { useCallback } from 'react';
 import { useEffect } from 'react';
 
 export default function TodoItems() {
-  //   const [todoItems, dispatch] = useReducer(todoItemReducer, []);
-
-  const [items, setItems] = useState({ count: 0, arr: [] });
+  const [todoItems, dispatch] = useReducer(todoItemReducer, initialItem);
   const addItems = useCallback((text) => {
-    setItems((prev) => ({
-      count: prev.count + 1,
-      arr: [
-        ...prev.arr,
-        {
-          id: prev.count + 1,
-          name: text,
-        },
-      ],
-    }));
-    // dispatch({ type: 'add', newItem });
+    dispatch({ type: 'add', text });
   }, []);
-  //   useEffect(() => {
-  //     console.log(items);
-  //   }, [items]);
   const removeItems = useCallback((text) => {
-    setItems((prev) => ({
-      ...prev,
-      arr: prev.arr.filter((item) => item.name !== text),
-    }));
-    console.log('remove!');
+    dispatch({ type: 'remove', text });
   }, []);
   return (
     <div>
-      {items.arr.map((item) => (
+      {todoItems.arr.map((item) => (
         <li key={item.id}>
           <TodoItem itemName={item.name} removeItems={removeItems}></TodoItem>
         </li>
@@ -43,3 +24,8 @@ export default function TodoItems() {
     </div>
   );
 }
+
+const initialItem = {
+  count: 0,
+  arr: [],
+};
