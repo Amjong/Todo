@@ -8,6 +8,7 @@ export default function todoItemReducer(todoItems, action) {
           {
             id: todoItems.count + 1,
             name: action.text,
+            state: 'active',
           },
         ],
       };
@@ -16,6 +17,17 @@ export default function todoItemReducer(todoItems, action) {
       return {
         ...todoItems,
         arr: todoItems.arr.filter((item) => item.name !== action.text),
+      };
+    }
+    case 'check': {
+      return {
+        ...todoItems,
+        arr: todoItems.arr.map((item) => {
+          if (item.name === action.text) {
+            item.state = action.checked === true ? 'completed' : 'active';
+          }
+          return item;
+        }),
       };
     }
     default:

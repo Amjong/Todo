@@ -1,24 +1,22 @@
 import React, { useState, useCallback } from 'react';
 import { GoTrashcan } from '@react-icons/all-files/go/GoTrashcan';
+import { useEffect } from 'react';
 
 function TodoItem(props) {
   const [checked, setChecked] = useState(false);
+
   const handleChange = () => {
-    if (checked === true) {
-      console.log('unchecked!!');
-    } else {
-      console.log('checked!!');
-    }
+    props.checkItems(props.itemName, checked);
   };
+  useEffect(handleChange, [checked]);
   return (
     <div>
       <input
         type='checkbox'
-        onClick={() => {
+        checked={checked}
+        onChange={() => {
           setChecked((prev) => !prev);
         }}
-        checked={checked}
-        onChange={handleChange}
       ></input>
       <span className='itemName'>{props.itemName}</span>
       <GoTrashcan
