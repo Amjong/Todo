@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { GoTrashcan } from '@react-icons/all-files/go/GoTrashcan';
 import { useEffect } from 'react';
-import { styles } from './TodoItem.module.css';
+import styles from './TodoItem.module.css';
 
 function TodoItem(props) {
   const [checked, setChecked] = useState(
@@ -21,12 +21,12 @@ function TodoItem(props) {
           setChecked((prev) => !prev);
         }}
       ></input>
-      <span className='itemName'>{props.itemName}</span>
+      <span className={styles.itemName}>{props.itemName}</span>
       <GoTrashcan
         onClick={() => {
           props.removeItems(props.itemName);
         }}
-        className='trashcan'
+        className={styles.trashcan}
       />
     </div>
   );

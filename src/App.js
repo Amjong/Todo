@@ -14,6 +14,7 @@ function App() {
     <div className='App'>
       <header>
         <button
+          className='filterButton'
           onClick={() => {
             handleClick('All');
           }}
@@ -21,6 +22,7 @@ function App() {
           All
         </button>
         <button
+          className='filterButton'
           onClick={() => {
             handleClick('active');
           }}
@@ -28,6 +30,7 @@ function App() {
           active
         </button>
         <button
+          className='filterButton'
           onClick={() => {
             handleClick('completed');
           }}

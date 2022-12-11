@@ -1,9 +1,9 @@
-input {
+.input {
   border: 2px solid black;
   outline: none;
 }
 
-button {
+.button {
   outline: none;
   border: 2px solid black;
   border-radius: 3px;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { styles } from './TodoForm.module.css';
+import styles from './TodoForm.module.css';
 
 function TodoForm(props) {
   const [todoText, setTodoText] = useState('');
@@ -14,14 +14,14 @@ function TodoForm(props) {
         value={todoText}
         onChange={handleChange}
         placeholder='Add Todo'
-        // style={styles.input}
+        className={styles.input}
       ></input>
       <button
         onClick={() => {
           props.addItems(todoText);
           setTodoText('');
         }}
-        // style={styles.button}
+        className={styles.button}
       >
         Add
       </button>

@@ -3,7 +3,7 @@ import todoItemReducer from '../reducer/todoItemReducer';
 import TodoItem from './TodoItem';
 import TodoForm from './TodoForm';
 import { useCallback } from 'react';
-import { styles } from './TodoItems.module.css';
+import styles from './TodoItems.module.css';
 
 export default function TodoItems(props) {
   const [todoItems, dispatch] = useReducer(todoItemReducer, initialItem);
@@ -21,7 +21,7 @@ export default function TodoItems(props) {
       {todoItems.arr.map((item) => {
         if (props.state === 'All' || item.state === props.state) {
           return (
-            <li key={item.id}>
+            <li key={item.id} className={styles.li}>
               <TodoItem
                 itemName={item.name}
                 removeItems={removeItems}
