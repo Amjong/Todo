@@ -1,9 +1,12 @@
 import React, { useState, useCallback } from 'react';
 import { GoTrashcan } from '@react-icons/all-files/go/GoTrashcan';
 import { useEffect } from 'react';
+import { styles } from './TodoItem.module.css';
 
 function TodoItem(props) {
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(
+    props.itemState === 'completed' ? true : false
+  );
 
   const handleChange = () => {
     props.checkItems(props.itemName, checked);
@@ -23,6 +26,7 @@ function TodoItem(props) {
         onClick={() => {
           props.removeItems(props.itemName);
         }}
+        className='trashcan'
       />
     </div>
   );
